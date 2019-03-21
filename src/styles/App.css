@@ -5,7 +5,6 @@
   display: flex;
   width: 100vw;
   height: 100vh;
-
   background: #A96E4C;
   color: #FFFFFF;
 }
@@ -21,7 +20,7 @@
 
 .pf-overlay__legend {
   position: absolute;
-  top: 290px;
+  top: 230px;
   left: 175px;
   font-size: 26px;
   line-height: 30px;
@@ -75,29 +74,72 @@
 .carousel_slide img {
   min-width: 100%;
   min-height: 100%;
+  transform: translate3d(0,0,0);
+  transition: 0.4s cubic-bezier(0.8, 0, 0.2, 1);
 }
+
+.carousel_slide.is-hover-prev img {
+  transform: translate3d(100px,0,0);
+}
+.carousel_slide.is-hover-next img {
+  transform: translate3d(-100px,0,0);
+}
+
 .carousel_control {
   -webkit-appearance: none;
   position: absolute;
   z-index: 2;
-  top: 0;
-  height: 100%;
-  display: block;
+  width: 100vw;
+  height: auto;
   border: 0;
   background: transparent;
   padding: 0 5px;
-  width: 10%;
-  overflow: hidden;
-  transition: background-color 300ms ease;
   cursor: pointer;
+  font-size: 125px;
+  line-height: 0.8;
+  letter-spacing: 7.5px;
+  text-align: right;
 }
+
+.carousel_control-top {
+  top: 375px;
+  height: 100px;
+}
+
+.carousel_control-bot {
+  top: 495px;
+  height: 200px;
+}
+
 .carousel_control__prev {
-  left: 0;
-  padding-left: 12px;
+  position: absolute;
+  right: calc(100vw - 250px);
+  transition: 0.4s cubic-bezier(0.8, 0, 0.2, 1);
 }
 .carousel_control__next {
-  right: 0;
-  padding-right: 12px;
+  position: absolute;
+  right: 177px;
+  transition: 0.4s cubic-bezier(0.8, 0, 0.2, 1);
+}
+
+.carousel_control__prev:hover {
+  transform: translate3d(54px,0,0);
+}
+.carousel_control__next:hover {
+  transform: translate3d(-54px,0,0);
+}
+
+.carousel_btnarrow {
+  position: absolute;
+  top: 23px;
+  right: -53px;
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .leave {
@@ -106,7 +148,8 @@
 
 .enter-active.enter-next, .enter-active.enter-prev {
   transform: translateX(0);
-  transition: transform 500ms linear;
+  transition: 1.25s cubic-bezier(0.8, 0, 0.2, 1);
+  pointer-events: none;
 }
 
 .enter-next {
@@ -115,15 +158,22 @@
 
 .enter-prev {
   transform: translateX(-100%);
-  transition: transform 500ms linear;
+  transition: 1.25s cubic-bezier(0.8, 0, 0.2, 1);
 }
 
 .leave-active-next {
   transform: translateX(-100%);
-  transition: transform 500ms linear;
+  transition: 1.25s cubic-bezier(0.8, 0, 0.2, 1);
 }
 
 .leave.leave-active-prev {
   transform: translateX(100%);
-  transition: transform 500ms linear;
+  transition: 1.25s cubic-bezier(0.8, 0, 0.2, 1);
 }
+
+/* .is-going-next div,
+.is-alternate-text div {
+  transform: translate3d(-75vw,0,0);
+  opacity: 0;
+  transition: transform 1.25s cubic-bezier(0.8, 0, 0.2, 1), opacity 1.25s linear;
+} */
