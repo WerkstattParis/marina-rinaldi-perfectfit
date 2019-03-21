@@ -69,9 +69,6 @@
   height: 100%;
   width: 100%;
   z-index: 1;
-  background-color: black;
-  display: flex;
-  place-content: center center;
   object-fit: cover;
   overflow: hidden;
 }
