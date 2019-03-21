@@ -1,7 +1,7 @@
 {
   "version": 2,
-  "name": "marina-rinaldi-perfectfit",
-  "alias": "marina-rinaldi-perfectfit.now.sh",
+  "name": "mrpf",
+  "alias": "mrpf.now.sh",
   "builds": [
     {"src": "package.json", "use": "@now/static-build", "config": {"distDir": "build"}}
   ],
