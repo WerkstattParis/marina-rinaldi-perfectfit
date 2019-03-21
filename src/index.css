@@ -1,7 +1,7 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Aperto', 'Roboto', serif;
+  font-family: 'Marcellus', 'Roboto', serif;
   text-transform: uppercase;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -14,8 +14,8 @@ body {
 }
 
 @font-face {
-  font-family: 'Aperto'; 
-  src: url('./assets/aperto.otf'); 
+  font-family: 'Marcellus'; 
+  src: url('./assets/marcellus.ttf'); 
 }
 
 @font-face {

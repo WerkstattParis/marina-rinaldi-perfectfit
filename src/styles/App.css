@@ -10,66 +10,16 @@
   color: #FFFFFF;
 }
 
-/* PF Styles Container */
+/* PF overlay Container */
 
-.pf-styles {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-}
-
-.pf-styles-frame {
-  position: absolute;
-  top: 0;
-  left: 0;
-  transform: translate3d(calc(0 * -100vw),0,0);
-  transition: .8s ease-in-out;
-
-  display: flex;
-  flex-flow: row nowrap;
-}
-
-.pf-styles__item {
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-  object-fit: cover;
-  overflow: hidden;
-  display: grid;
-  place-content: center center;  
-}
-
-.pf-styles__item img {
-  transition: .3s;
-  transform: scale(1) translate3d(0vw,0,0);
-}
-
-
-/* PF Nav Container */
-
-.pf-nav {
+.pf-overlay {
   position: absolute;
   width: 100vw;
   height: 100vh;
+  z-index: 1;
 }
 
-.pf-nav-wrapper {
-  position: absolute;
-  top: 435px;
-  width: 100vw;
-  height: 275px;
-  /* outline: 1px solid cyan; */
-
-  font-size: 125px;
-  line-height: 87px;
-  letter-spacing: 7.5px;
-}
-
-
-.pf-nav__legend {
+.pf-overlay__legend {
   position: absolute;
   top: 290px;
   left: 175px;
@@ -78,7 +28,7 @@
   letter-spacing: 3px;
 }
 
-.pf-nav__btn-look {
+.pf-overlay__btn-look {
   border: none;
   cursor: pointer;
 
@@ -101,6 +51,82 @@
   transition: .2s ease-out;
 }
 
-.pf-nav__btn-look:active {
+.pf-overlay__btn-look:active {
   transform: translate3d(0,2px, 0);
+}
+
+
+.carousel {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+.carousel_slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+  background-color: black;
+  display: flex;
+  place-content: center center;
+  object-fit: cover;
+  overflow: hidden;
+}
+.carousel_slide img {
+  min-width: 100%;
+  min-height: 100%;
+}
+.carousel_control {
+  -webkit-appearance: none;
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  height: 100%;
+  display: block;
+  border: 0;
+  background: transparent;
+  padding: 0 5px;
+  width: 10%;
+  overflow: hidden;
+  transition: background-color 300ms ease;
+  cursor: pointer;
+}
+.carousel_control__prev {
+  left: 0;
+  padding-left: 12px;
+}
+.carousel_control__next {
+  right: 0;
+  padding-right: 12px;
+}
+
+.leave {
+  transform: translateX(0);
+}
+
+.enter-active.enter-next, .enter-active.enter-prev {
+  transform: translateX(0);
+  transition: transform 500ms linear;
+}
+
+.enter-next {
+  transform: translateX(100%);
+}
+
+.enter-prev {
+  transform: translateX(-100%);
+  transition: transform 500ms linear;
+}
+
+.leave-active-next {
+  transform: translateX(-100%);
+  transition: transform 500ms linear;
+}
+
+.leave.leave-active-prev {
+  transform: translateX(100%);
+  transition: transform 500ms linear;
 }

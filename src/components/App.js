@@ -1,61 +1,101 @@
 import React, { Component } from 'react';
+import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
 import '../styles/App.css';
-import anime from 'animejs'
+// import anime from 'animejs'
 import style1 from '../assets/style-1.jpg'
 import style2 from '../assets/style-2.jpg'
 import style3 from '../assets/style-3.jpg'
 import style4 from '../assets/style-4.jpg'
 
 class App extends Component {
-  constructor() {
-    super()
-    this.state = {
-      activeIndex: 0,
-      previousIndex: 0
+  constructor(props) {
+    super(props)
+    this.state = { 
+      items: [
+        style1,
+        style2,
+        style3,
+        style4
+      ], 
+      current: 0, 
+      isNext: true 
     };
+
+    this.handlerPrev = this.handlerPrev.bind(this);
+    this.handlerNext = this.handlerNext.bind(this);
   }
 
-  componentDidMount() {
-    // anime({
-    //   targets: '.pf-nav__btn-look',
-    //   rotate: '0.2turn',
-    //   duration: 1800
-    // })
+  // TODO: Need to divide in two types of handlers:
+  //    - tophandler: prev/next
+  //    - bothandler: prev/next
+
+  handlerPrev() {
+    let index = this.state.current,
+        length = this.state.items.length;
+    
+    if( index < 1 ) {
+      index = length;
+    }
+    
+    index = index - 1;
+  
+    this.setState({
+      current: index,
+      isNext: false
+    });
+  }
+  
+  handlerNext() {
+    let index = this.state.current,
+        length = this.state.items.length - 1;
+    
+    if( index == length ) {
+      index = -1;
+    }
+    
+    index = index + 1;
+    
+    this.setState({
+      current: index,
+      isNext: true
+    });                
   }
   
   render() {
+    let index = this.state.current,
+        isnext = this.state.isNext,
+        src = this.state.items[index];
+
     return (
       <div className="perfectFit">
-        <nav>{/* Here: future nav if we have the time */}</nav>
+        <div className="carousel">
+          <CSSTransitionGroup
+            transitionName={{
+            enter: isnext ? 'enter-next' : 'enter-prev',
+            enterActive: 'enter-active',
+            leave: 'leave',
+            leaveActive: isnext ? 'leave-active-next' : 'leave-active-prev'
+            }}
+          >
+            <div className="carousel_slide" key={index}>
+              <img src={src}/>
+            </div>
+          </CSSTransitionGroup>
 
-        <div className="pf-styles">
-          <div className="pf-styles-frame">
-            <div className="pf-styles__item">
-              <img src={style1} alt="style 1" />
-            </div>
-            <div className="pf-styles__item">
-              <img src={style2} alt="style 2" />
-            </div>
-            <div className="pf-styles__item">
-              <img src={style3} alt="style 3" />
-            </div>
-            <div className="pf-styles__item">
-              <img src={style4} alt="style 4" />
-            </div>
-          </div>
+          <span className="carousel_control carousel_control__prev" onClick={this.handlerPrev}>
+            <span>Retro</span>
+            <span>Classy</span>
+
+          </span>
+          <span className="carousel_control carousel_control__next" onClick={this.handlerNext}>
+            <span>Evening Party</span>
+            <span>Automnal Getaway</span>
+          </span>
         </div>
 
-        <div className="pf-nav">
-          <p className="pf-nav__legend">The perfect fit<br />for the perfect<br />women</p>
-          <div className="pf-nav-wrapper">
-            <div className="pf-nav__prev">
-              prev
-            </div>
-            <div className="pf-nav__next">
-              next
-            </div>
-          </div>
-          <button className="pf-nav__btn-look">Shop the look</button>
+        <div className="pf-overlay">
+          <p className="pf-overlay__legend">The perfect fit<br />for the perfect<br />women</p>
+          <button className="pf-overlay__btn-look">Shop the look</button>
         </div>
       </div>
     );
