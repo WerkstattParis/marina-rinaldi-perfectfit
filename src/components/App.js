@@ -74,14 +74,7 @@ class App extends Component {
     this.setState({
       current: index,
       isNext: true
-    });  
-    
-    // let btn = document.querySelector('.carousel_control-top .carousel_control__next')
-    // btn.classList.add('is-going-next')
-    // btn.classList.toggle('is-alternate-text')
-    // window.setTimeout(()=>{
-    //   btn.classList.remove('is-going-next')
-    // },1000)
+    });
   }
 
   onHoverNext() {
@@ -146,6 +139,12 @@ class App extends Component {
         <div className="pf-overlay">
           <p className="pf-overlay__legend">The perfect fit<br />for the perfect<br />women</p>
           <button className="pf-overlay__btn-look">Shop the look</button>
+        </div>
+        <div className="trick-to-preload-images">
+          <img src={style1} />
+          <img src={style2} />
+          <img src={style3} />
+          <img src={style4} />
         </div>
       </div>
     );
