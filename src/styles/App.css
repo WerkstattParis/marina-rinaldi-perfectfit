@@ -61,33 +61,71 @@
   height: 100vh;
   overflow: hidden;
 }
-.carousel_slide {
-  position: absolute;
-  top: 0;
-  left: 0;
+
+.slick-arrow {
+  z-index: 10;
+  position: fixed;
+  width: 100px;
   height: 100%;
-  width: 100%;
-  z-index: 1;
-  object-fit: cover;
-  overflow: hidden;
 }
-.carousel_slide img {
-  min-width: 100%;
-  min-height: 100%;
+
+.slick-prev {
+  left: 0;
+  width: 260px;
   transform: translate3d(0,0,0);
+  transition: 0.4s cubic-bezier(0.8, 0, 0.2, 1);
+  opacity: 0.4;
+}
+
+.slick-prev:hover {
+  transform: translate3d(54px,0,0);
+  opacity: 1;
+}
+
+.slick-next {
+  right: 185px;
+  width: 50vw;
+  left: auto;
   transition: 0.4s cubic-bezier(0.8, 0, 0.2, 1);
 }
 
-.carousel_slide.is-hover-prev img {
-  transform: translate3d(100px,0,0);
+.slick-next > div {
+  position: absolute;
+  top: 28px;
+  right: -50px;
+  width: 42px;
+  height: 42px;
+  border-radius: 100%;
+  overflow: hidden;
 }
-.carousel_slide.is-hover-next img {
-  transform: translate3d(-100px,0,0);
+
+.slick-next svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.slick-next circle {
+  transition: 0.4s cubic-bezier(0.8, 0, 0.2, 1);
+}
+
+.slick-next:hover circle {
+  stroke-width: 42px;
+}
+
+.carousel_control-top .slick-arrow {
+  top: 375px;
+  height: 100px;
+}
+
+.carousel_control-bot .slick-arrow {
+  top: 495px;
+  height: 200px;
 }
 
 .carousel_control {
   -webkit-appearance: none;
-  position: absolute;
+  position: absolute !important;
   z-index: 2;
   width: 100vw;
   height: auto;
@@ -104,6 +142,19 @@
 .carousel_control-top {
   top: 375px;
   height: 100px;
+}
+
+.carousel_control.slick-slider {
+  right: 185px;
+  width: calc(100vw - 185px - 260px);
+}
+
+.carousel_control .slick-list {
+  overflow: visible;
+}
+
+.slick-slide *:focus {
+  outline: none !important;
 }
 
 .carousel_control-bot {
@@ -133,49 +184,13 @@
 
 .carousel_btnarrow {
   position: absolute;
-  top: 23px;
-  right: -53px;
-  width: 40px;
-  height: 40px;
-  background: transparent;
-  border-radius: 20px;
+  top: 22px;
+  right: -52px;
+  width: 42px;
+  height: 42px;
+  border-radius: 22px;
+  overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.leave {
-  transform: translateX(0);
-}
-
-.enter-active.enter-next, .enter-active.enter-prev {
-  transform: translateX(0);
-  transition: 1.25s cubic-bezier(0.8, 0, 0.2, 1);
-  pointer-events: none;
-}
-
-.enter-next {
-  transform: translateX(100%);
-}
-
-.enter-prev {
-  transform: translateX(-100%);
-  transition: 1.25s cubic-bezier(0.8, 0, 0.2, 1);
-}
-
-.leave-active-next {
-  transform: translateX(-100%);
-  transition: 1.25s cubic-bezier(0.8, 0, 0.2, 1);
-}
-
-.leave.leave-active-prev {
-  transform: translateX(100%);
-  transition: 1.25s cubic-bezier(0.8, 0, 0.2, 1);
-}
-
-.trick-to-preload-images {
-  position: absolute;
-  visibility: hidden;
-  opacity: 0;
-  pointer-events: none;
 }
