@@ -131,7 +131,6 @@
   height: auto;
   border: 0;
   background: transparent;
-  padding: 0 5px;
   cursor: pointer;
   font-size: 125px;
   line-height: 0.8;
@@ -153,6 +152,10 @@
   overflow: visible;
 }
 
+.slick-slide img {
+  width: 100vw;
+}
+
 .slick-slide *:focus {
   outline: none !important;
 }
@@ -160,37 +163,4 @@
 .carousel_control-bot {
   top: 495px;
   height: 200px;
-}
-
-.carousel_control__prev {
-  position: absolute;
-  right: calc(100vw - 300px);
-  transition: 0.4s cubic-bezier(0.8, 0, 0.2, 1);
-  opacity: 0.4;
-}
-.carousel_control__next {
-  position: absolute;
-  right: 177px;
-  transition: 0.4s cubic-bezier(0.8, 0, 0.2, 1);
-}
-
-.carousel_control__prev:hover {
-  transform: translate3d(54px,0,0);
-  opacity: 1;
-}
-.carousel_control__next:hover {
-  transform: translate3d(-54px,0,0);
-}
-
-.carousel_btnarrow {
-  position: absolute;
-  top: 22px;
-  right: -52px;
-  width: 42px;
-  height: 42px;
-  border-radius: 22px;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }

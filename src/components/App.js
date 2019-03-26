@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Slider from 'react-slick'
-import anime from 'animejs';
 
 import 'slick-carousel/slick/slick.css'; 
 import '../styles/App.css';
@@ -17,13 +16,6 @@ class App extends Component {
       nav1: null,
       nav2: null
     }
-
-    this.handlerPrev = this.handlerPrev.bind(this);
-    this.handlerNext = this.handlerNext.bind(this);
-    this.onHoverPrev = this.onHoverPrev.bind(this);
-    this.onHoverNext = this.onHoverNext.bind(this);
-    this.onHoverPrevExit = this.onHoverPrevExit.bind(this);
-    this.onHoverNextExit = this.onHoverNextExit.bind(this);
   }
 
   componentDidMount() {
@@ -31,88 +23,6 @@ class App extends Component {
       nav1: this.slider1,
       nav2: this.slider2
     });
-
-    this.btnPrev1 = document.querySelector('.carousel_control-top .slick-prev');
-    this.btnNext1 = document.querySelector('.carousel_control-top .slick-next');
-    this.btnPrev2 = document.querySelector('.carousel_control-bot .slick-prev');
-    this.btnNext2 = document.querySelector('.carousel_control-bot .slick-next');
-    this.slideTrack = document.querySelector('.carousel .slick-track');
-
-    this.btnPrev1.addEventListener('mouseover', this.onHoverPrev)
-    this.btnPrev1.addEventListener('mouseleave', this.onHoverPrevExit)
-    this.btnNext1.addEventListener('mouseover', this.onHoverNext)
-    this.btnNext1.addEventListener('mouseleave', this.onHoverNextExit)
-    this.btnPrev2.addEventListener('mouseover', this.onHoverPrev)
-    this.btnPrev2.addEventListener('mouseleave', this.onHoverPrevExit)
-    this.btnNext2.addEventListener('mouseover', this.onHoverNext)
-    this.btnNext2.addEventListener('mouseleave', this.onHoverNextExit)
-  }
-
-  handlerPrev() {
-    let index = this.state.current,
-        length = this.state.items.length;
-    
-    if( index < 1 ) {
-      index = length;
-      index = index - 1;
-  
-      this.setState({
-        current: index,
-        isNext: false
-      });
-    }
-  }
-  
-  handlerNext() {
-    let index = this.state.current,
-        length = this.state.items.length - 1;
-    
-    if( index == length ) {
-      index = -1;
-      index = index + 1;
-    
-      this.setState({
-        current: index,
-        isNext: true
-      });
-    }
-  }
-
-  onHoverNext() {
-    this.slideTrack.classList.add('is-hover-next')
-    // anime({
-    //   targets: this.slideTrack,
-    //   translateX: '-=100',
-    //   duration: 0.4,
-    //   easing: 'cubicBezier(0.8, 0, 0.2, 1)'
-    // });
-  }
-  onHoverPrev() {
-    this.slideTrack.classList.add('is-hover-prev')
-    // anime({
-    //   targets: this.slideTrack,
-    //   translateX: '+=100',
-    //   duration: 0.4,
-    //   easing: 'cubicBezier(0.8, 0, 0.2, 1)'
-    // });  
-  }
-  onHoverNextExit() {
-    this.slideTrack.classList.remove('is-hover-next')
-    // anime({
-    //   targets: this.slideTrack,
-    //   translateX: '+=100',
-    //   duration: 0.4,
-    //   easing: 'cubicBezier(0.8, 0, 0.2, 1)'
-    // });
-  }
-  onHoverPrevExit() {
-    this.slideTrack.classList.remove('is-hover-prev')
-    // anime({
-    //   targets: this.slideTrack,
-    //   translateX: '-=100',
-    //   duration: 0.4,
-    //   easing: 'cubicBezier(0.8, 0, 0.2, 1)'
-    // });
   }
   
   render() {
@@ -158,7 +68,7 @@ class App extends Component {
           <Slider 
             {...mainSliderSettings}
             ref={slider => (this.slider1 = slider)}
-            className={'carousel ' + (this.state.hover !== undefined ? 'hover' : '')}
+            className="carousel"
           >
             <div className="carousel_slide">
               <img src={style1} alt=''/>

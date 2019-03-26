@@ -2,14 +2,11 @@
   "name": "marina-rinaldi-perfectfit",
   "version": "0.1.0",
   "dependencies": {
-    "animejs": "^3.0.1",
     "modern-normalize": "^0.5.0",
     "react": "^16.6.1",
-    "react-anime": "^2.2.0",
     "react-dom": "^16.6.1",
     "react-scripts": "2.1.1",
     "react-slick": "*0.23.1",
-    "react-transition-group": "^1.2.1",
     "slick-carousel": "*1.8.1"
   },
   "scripts": {
