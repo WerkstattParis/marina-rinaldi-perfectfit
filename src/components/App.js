@@ -14,8 +14,12 @@ class App extends Component {
     super(props);
     this.state = { 
       nav1: null,
-      nav2: null
+      nav2: null,
+      hoverElem: null
     }
+
+    this._simulateHover = this.simulateHover.bind(this);
+    this._removeHover = this.removeHover.bind(this);
   }
 
   componentDidMount() {
@@ -23,6 +27,35 @@ class App extends Component {
       nav1: this.slider1,
       nav2: this.slider2
     });
+
+    this.btnPrev1 = document.querySelector('.carousel_control-top .slick-prev');
+    this.btnNext1 = document.querySelector('.carousel_control-top .slick-next');
+    this.btnPrev2 = document.querySelector('.carousel_control-bot .slick-prev');
+    this.btnNext2 = document.querySelector('.carousel_control-bot .slick-next');
+
+    this.btnPrev1.addEventListener('mouseover', ()=>{this.setState({hoverElem: this.btnPrev1}) ; this._simulateHover()})
+    this.btnPrev1.addEventListener('mouseleave', this._removeHover)
+    this.btnNext1.addEventListener('mouseover', ()=>{this.setState({hoverElem: this.btnNext1}) ; this._simulateHover()})
+    this.btnNext1.addEventListener('mouseleave', this._removeHover)
+    this.btnPrev2.addEventListener('mouseover', ()=>{this.setState({hoverElem: this.btnPrev2}) ; this._simulateHover()})
+    this.btnPrev2.addEventListener('mouseleave', this._removeHover)
+    this.btnNext2.addEventListener('mouseover', ()=>{this.setState({hoverElem: this.btnNext2}) ; this._simulateHover()})
+    this.btnNext2.addEventListener('mouseleave', this._removeHover)
+  }
+
+  simulateHover() {
+    let currentSlideIndex = parseInt(document.querySelector('.carousel .slick-active').getAttribute('data-index'))
+    let dir = this.state.hoverElem.classList.contains('slick-next') ? 'next' : 'prev'
+    let hoverSlideIndex = (dir === 'next' ? currentSlideIndex + 1 : currentSlideIndex - 1)
+    if (hoverSlideIndex < 0) { hoverSlideIndex = 3 }
+
+    document.querySelector('.carousel .slick-track').classList.add(dir === 'next' ? 'next' : 'prev')
+  }
+
+  removeHover() {
+    let dir = this.state.hoverElem.classList.contains('slick-next') ? 'next' : 'prev'
+    document.querySelector('.carousel .slick-track').classList.remove(dir === 'next' ? 'next' : 'prev')
+    this.setState({hoverElem: null})
   }
   
   render() {
@@ -92,8 +125,8 @@ class App extends Component {
           >
             <span className="top-style">Retro</span>
             <span className="top-style">Classy</span>
-            <span className="top-style">Number 3</span>
-            <span className="top-style">Number 4</span>
+            <span className="top-style">Sport</span>
+            <span className="top-style">Winter</span>
           </Slider>
 
           <Slider
@@ -104,7 +137,7 @@ class App extends Component {
           >
             <span className="top-style">Evening<br/> Party</span>
             <span className="top-style">Automnal<br/> Getaway</span>
-            <span className="top-style">Third<br/> Style</span>
+            <span className="top-style">Summer<br/> Evening</span>
             <span className="top-style">Fourth<br/> Style</span>
           </Slider>
         </div>
