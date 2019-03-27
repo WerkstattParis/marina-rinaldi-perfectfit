@@ -164,3 +164,14 @@
   top: 495px;
   height: 200px;
 }
+
+
+
+
+/* FIX for those misaligned images */
+.carousel .slick-track .style1 {
+  margin-top: -60px;
+}
+.carousel .slick-track .style3 {
+  margin-top: -180px;
+}

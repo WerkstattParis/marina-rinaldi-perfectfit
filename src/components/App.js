@@ -71,16 +71,16 @@ class App extends Component {
             className="carousel"
           >
             <div className="carousel_slide">
-              <img src={style1} alt=''/>
+              <img src={style1} class="style1" alt=''/>
             </div>
             <div className="carousel_slide">
-              <img src={style2} alt=''/>
+              <img src={style2} class="style2" alt=''/>
             </div>
             <div className="carousel_slide">
-              <img src={style3} alt=''/>
+              <img src={style3} class="style3" alt=''/>
             </div>
             <div className="carousel_slide">
-              <img src={style4} alt=''/>
+              <img src={style4} class="style4" alt=''/>
             </div>
           </Slider>
 
